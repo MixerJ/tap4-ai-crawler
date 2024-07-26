@@ -101,7 +101,7 @@ class WebsitCrawler:
             }}''', width, height)
             # 截屏并设置图片大小
             screenshot_path = './' + url.replace("https://", "").replace("http://", "").replace("/", "").replace(".",
-                                                                                                                 "-") + '.png'
+                                                                                                                 "-") + '.webp'
             await page.screenshot({'path': screenshot_path, 'clip': {
                 'x': 0,
                 'y': 0,

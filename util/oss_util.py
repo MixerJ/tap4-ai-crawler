@@ -54,7 +54,7 @@ class OSSUtil:
         # 生成时间戳
         timestamp = int(time.time())
         # 构建默认的 file_key
-        return f"tools/{year}/{month}/{day}/{image_name}-{timestamp}.png"
+        return f"tools/{year}/{month}/{day}/{image_name}-{timestamp}.webp"
 
     def upload_file_to_r2(self, file_path, file_key):
         try:
@@ -66,11 +66,13 @@ class OSSUtil:
                     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
                 })
                 image_data = response.content
-                self.s3.upload_fileobj(BytesIO(image_data), self.S3_BUCKET_NAME, file_key)
+                self.s3.upload_fileobj(
+                    BytesIO(image_data), self.S3_BUCKET_NAME, file_key)
             else:
                 self.s3.upload_file(file_path, self.S3_BUCKET_NAME, file_key)
 
-            logger.info(f"文件 '{file_path}' 成功上传到 '{self.S3_BUCKET_NAME}/{file_key}'")
+            logger.info(
+                f"文件 '{file_path}' 成功上传到 '{self.S3_BUCKET_NAME}/{file_key}'")
             if os.path.exists(file_path):
                 os.remove(file_path)
 
@@ -88,7 +90,8 @@ class OSSUtil:
 
     def generate_thumbnail_image(self, url, image_key):
         # 下载图像文件
-        response = self.s3.get_object(Bucket=self.S3_BUCKET_NAME, Key=image_key)
+        response = self.s3.get_object(
+            Bucket=self.S3_BUCKET_NAME, Key=image_key)
         image_data = response['Body'].read()
 
         # 使用Pillow库打开图像
@@ -102,12 +105,13 @@ class OSSUtil:
 
         # 创建一个BytesIO对象来保存缩略图
         thumbnail_buffer = BytesIO()
-        resized_image.save(thumbnail_buffer, format='PNG')
+        resized_image.save(thumbnail_buffer, format='WEBP')
         thumbnail_buffer.seek(0)
 
         # 将缩略图上传回S3
         thumbnail_key = self.get_default_file_key(url, is_thumbnail=True)
-        self.s3.put_object(Bucket=self.S3_BUCKET_NAME, Key=thumbnail_key, Body=thumbnail_buffer)
+        self.s3.put_object(Bucket=self.S3_BUCKET_NAME,
+                           Key=thumbnail_key, Body=thumbnail_buffer)
 
         # 如果提供了自定义域名
         if self.S3_CUSTOM_DOMAIN:
