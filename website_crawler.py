@@ -107,9 +107,9 @@ class WebsitCrawler:
             # 截屏并设置图片大小
             screenshot_path = './' + url.replace("https://", "").replace("http://", "").replace("/", "").replace(".",
                                                                                                                  "-")
-            save_webp = Image.open(screenshot_path).convert("RGB")
-            save_webp.save(screenshot_path+'.webp', 'webp')
-            await page.screenshot({'path': screenshot_path+'.png', 'clip': {
+            # save_webp = Image.open(screenshot_path).convert("RGB")
+            # save_webp.save(screenshot_path+'.webp', 'webp')
+            await page.screenshot({'path': screenshot_path+'.webp', 'clip': {
                 'x': 0,
                 'y': 0,
                 'width': dimensions['width'],
