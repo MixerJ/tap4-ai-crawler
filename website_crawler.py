@@ -107,14 +107,14 @@ class WebsitCrawler:
             # 截屏并设置图片大小
             screenshot_path = './' + url.replace("https://", "").replace("http://", "").replace("/", "").replace(".",
                                                                                                                  "-")
-            save_webp = Image.open(screenshot_path+'.png').convert("RGB")
-            save_webp.save(screenshot_path+'.webp', 'webp')
             await page.screenshot({'path': screenshot_path+'.png', 'clip': {
                 'x': 0,
                 'y': 0,
                 'width': dimensions['width'],
                 'height': dimensions['height']
             }})
+            save_webp = Image.open(screenshot_path+'.png').convert("RGB")
+            save_webp.save(screenshot_path+'.webp', 'webp')
             # 上传图片，返回图片地址
             screenshot_key = oss.upload_file_to_r2(
                 screenshot_path+'.webp', image_key)
