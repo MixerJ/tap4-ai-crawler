@@ -3,6 +3,7 @@ import logging
 import time
 import random
 from pyppeteer import launch
+from PIL import Image
 
 from util.common_util import CommonUtil
 from util.llm_util import LLMUtil
@@ -33,6 +34,7 @@ global_agent_headers = [
     "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:10.0) Gecko/20100101 Firefox/10.0 "
 ]
 
+
 class WebsitCrawler:
     def __init__(self):
         self.browser = None
@@ -49,7 +51,8 @@ class WebsitCrawler:
 
             if self.browser is None:
                 self.browser = await launch(headless=True,
-                                            ignoreDefaultArgs=["--enable-automation"],
+                                            ignoreDefaultArgs=[
+                                                "--enable-automation"],
                                             ignoreHTTPSErrors=True,
                                             args=['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu',
                                                   '--disable-software-rasterizer', '--disable-setuid-sandbox'],
@@ -85,8 +88,10 @@ class WebsitCrawler:
                 description = meta_description['content'].strip()
 
             if not description:
-                meta_description = soup.find('meta', attrs={'property': 'og:description'})
-                description = meta_description['content'].strip() if meta_description else ''
+                meta_description = soup.find(
+                    'meta', attrs={'property': 'og:description'})
+                description = meta_description['content'].strip(
+                ) if meta_description else ''
 
             logger.info(f"url:{url}, title:{title},description:{description}")
 
@@ -101,15 +106,18 @@ class WebsitCrawler:
             }}''', width, height)
             # 截屏并设置图片大小
             screenshot_path = './' + url.replace("https://", "").replace("http://", "").replace("/", "").replace(".",
-                                                                                                                 "-") + '.webp'
-            await page.screenshot({'path': screenshot_path, 'clip': {
+                                                                                                                 "-")
+            save_webp = Image.open(screenshot_path).convert("RGB")
+            save_webp.save(screenshot_path+'.webp', 'webp')
+            await page.screenshot({'path': screenshot_path+'.png', 'clip': {
                 'x': 0,
                 'y': 0,
                 'width': dimensions['width'],
                 'height': dimensions['height']
             }})
             # 上传图片，返回图片地址
-            screenshot_key = oss.upload_file_to_r2(screenshot_path, image_key)
+            screenshot_key = oss.upload_file_to_r2(
+                screenshot_path+'.webp', image_key)
 
             # 生成缩略图
             thumnbail_key = oss.generate_thumbnail_image(url, image_key)
@@ -124,7 +132,8 @@ class WebsitCrawler:
             # 如果tags为非空数组，则使用llm工具处理tags
             processed_tags = None
             if tags and detail:
-                processed_tags = llm.process_tags('tag_list is:' + ','.join(tags) + '. content is: ' + detail)
+                processed_tags = llm.process_tags(
+                    'tag_list is:' + ','.join(tags) + '. content is: ' + detail)
 
             # 循环languages数组， 使用llm工具生成各种语言
             processed_languages = []
@@ -132,7 +141,8 @@ class WebsitCrawler:
                 for language in languages:
                     logger.info("正在处理" + url + "站点，生成" + language + "语言")
                     processed_title = llm.process_language(language, title)
-                    processed_description = llm.process_language(language, description)
+                    processed_description = llm.process_language(
+                        language, description)
                     processed_detail = llm.process_language(language, detail)
                     processed_languages.append({'language': language, 'title': processed_title,
                                                 'description': processed_description, 'detail': processed_detail})
