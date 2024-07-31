@@ -1,5 +1,5 @@
 beautifulsoup4
-pyppeteer==2.3.0
+pyppeteer
 fastapi[all]
 uvicorn
 python-dotenv
