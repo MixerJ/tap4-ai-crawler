@@ -194,6 +194,11 @@ The Collection for the AI tools all over the world. | Collect free ChatGPT mirro
 
 Here is the website list for submitting your product to get users. Please visit [StartUp Your Product List](https://github.com/6677-ai/TAP4-AI-Directory/blob/main/Startup-Your-Product-List.md)
 
+### Flux 1.1 Pro - Free Online Flux.1 AI Image Generator
+
+[Flux 1.1 Pro](https://fluxproweb.com/)
+
+
 ### Free Stable Diffusion 3 Online Tool
 
 [Free Stable Diffusion 3 Online](https://stable-diffusion-3.online)
@@ -202,6 +207,10 @@ Here is the website list for submitting your product to get users. Please visit 
 
 [Free Type Png Tool](https://freetinypng.com)
 
+### Flux AI - Flux.1 AI Image Generator
+
+[Flux AI](https://flux-ai.io/)
+
 ### Free GPT2 Output Detector
 
 [Free GPT2 Output Detector](https://openai-openai-detector.com/)
@@ -209,13 +218,3 @@ Here is the website list for submitting your product to get users. Please visit 
 ### The Tattoo AI Generator and Design
 
 Tattoo AI Design is a tattoo AI generator and design tool for tattoo fans. If you are interested, visit [Tattoo AI Design](https://tattooai.design/)
-
-## Sponsor List
-
-### AI Anime Girlfriend -- AI Anime Girl Chat & Generator
-
-Anime Girl Studio is the AI anime girl generator and chat product. You can generate what you like and chat with the AI anime girl, please visit [AI Anime Girlfriend](https://animegirl.studio/)
-
-### Best AI GirlFriend -- Best AI Girlfriend & Generator
-
-Best AI Girl Friend is the AI girl generator and chat product. You can generate what you like and chat with the AI anime girl, please visit [Best AI Girlfriend](https://aigirl.best/)
