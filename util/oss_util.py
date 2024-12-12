@@ -125,12 +125,7 @@ class OSSUtil:
 
         # 将缩略图上传回S3
         thumbnail_key = self.get_default_file_key(url, is_thumbnail=True)
-<<<<<<< HEAD
-        self.s3.put_object(Bucket=self.S3_BUCKET_NAME,
-                           Key=thumbnail_key, Body=thumbnail_buffer)
-=======
         self.s3.put_object(Bucket=self.S3_BUCKET_NAME, Key=thumbnail_key, Body=compressed_thumbnail_data)
->>>>>>> other/main
 
         # 如果提供了自定义域名
         if self.S3_CUSTOM_DOMAIN:
