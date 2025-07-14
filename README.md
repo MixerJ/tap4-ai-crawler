@@ -186,6 +186,11 @@ Response Params:
 
 ## Link products
 
+### Flux IA
+
+[FLUX IA](https://fluxia.pro)
+Flux AI Image Geneartor Online.
+
 ### TAP4-AI-Directory
 
 The Collection for the AI tools all over the world. | Collect free ChatGPT mirrors, alternatives, prompts, other AI tools, etc. For more, please visit: [Tap4 AI](https://tap4.ai/)
@@ -211,9 +216,10 @@ Here is the website list for submitting your product to get users. Please visit 
 
 [Flux AI](https://flux-ai.io/)
 
-### Free GPT2 Output Detector
+### How Old Do I Look
 
-[Free GPT2 Output Detector](https://openai-openai-detector.com/)
+[How Old Do I Look](https://videoweb.ai/how-old-do-i-look/)
+Free AI Tool for the facial analysis to check how old do I look.
 
 ### The Tattoo AI Generator and Design
 
