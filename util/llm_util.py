@@ -13,7 +13,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 util = CommonUtil()
 # 初始化LLaMA模型的Tokenizer
-tokenizer = LlamaTokenizer.from_pretrained("huggyllama/llama-65b")
+tokenizer = LlamaTokenizer.from_pretrained("openai/gpt-oss-20b")
 
 class LLMUtil:
     def __init__(self):
