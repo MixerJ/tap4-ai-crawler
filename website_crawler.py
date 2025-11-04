@@ -2,6 +2,9 @@ from bs4 import BeautifulSoup
 import logging
 import time
 import random
+import os
+PYPPETEER_CHROMIUM_REVISION = '1263111'
+os.environ['PYPPETEER_CHROMIUM_REVISION'] = PYPPETEER_CHROMIUM_REVISION
 from pyppeteer import launch
 from PIL import Image
 

@@ -13,7 +13,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 util = CommonUtil()
 # 初始化LLaMA模型的Tokenizer
-tokenizer = LlamaTokenizer.from_pretrained("meta-llama/llama-guard-4-12b")
+tokenizer = LlamaTokenizer.from_pretrained("llama-3.3-70b-versatile")
 
 class LLMUtil:
     def __init__(self):
